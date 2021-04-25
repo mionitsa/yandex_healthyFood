@@ -68,11 +68,13 @@ def handle_dialog(req, res):
     if req['request']['original_utterance'].lower() == 'мужчина':
         res['response']['text'] = 'Вам нужно потреблять %s килокалорий в день.' #% (
             #str(kkal + 5))
+        return
 
     if req['request']['original_utterance'].lower() == 'женщина':
         res['response']['text'] = 'Вам нужно потреблять не так много килокалорий в день.' #% (
             #str(kkal - 161))
-
+        return
+        
 def get_suggests(user_id):
     session = sessionStorage[user_id]
     suggests = [
