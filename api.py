@@ -62,10 +62,14 @@ def handle_dialog(req, res):
 
     if data[0].lower() == 'мужчина':
         res['response']['text'] = 'Вам нужно потреблять %s килокалорий в день.' % (
-            str(kkal + 5)
-        )
+            str(kkal + 5))
+        return
 
     if data[0].lower() == 'женщина':
         res['response']['text'] = 'Вам нужно потреблять %s килокалорий в день.' % (
-            str(kkal - 161)
-        )
+            str(kkal - 161))
+        return
+
+    if req['request']['original_utterance'].lower() == 'сайт':
+        res['response']['text'] = 'Можете перейти по ссылке: mionitsa.pythonanywhere.com/marks_calculator'
+        return
