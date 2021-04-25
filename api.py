@@ -48,9 +48,17 @@ def handle_dialog(req, res):
 
     if req['session']['new']:
 
+        sessionStorage[user_id] = {
+            'suggests': [
+                "Мужчина",
+                "Женщина",
+            ]
+        }
+
         res['response']['text'] = 'Здравствуйте! Вас приветствует гид в мир ' \
         'полезной еды. Для начала введите свой пол, возраст, рост и вес. Например: ' \
         'Мужчина 24 175 68.'
+        res['response']['buttons'] = get_suggests(user_id)
         return
 
     data = (req['request']['original_utterance']).split()
@@ -70,3 +78,14 @@ def handle_dialog(req, res):
     if req['request']['original_utterance'].lower() == 'сайт':
         res['response']['text'] = 'Можете перейти по ссылке: mionitsa.pythonanywhere.com/marks_calculator'
         return
+
+    def get_suggests(user_id):
+        session = sessionStorage[user_id]
+
+        suggests = [
+            {'title': suggest, 'hide': False}
+            for suggest in session['suggests']
+        ]
+
+
+    return suggests
