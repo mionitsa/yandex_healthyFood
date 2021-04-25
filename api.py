@@ -59,7 +59,6 @@ def handle_dialog(req, res):
         res['response']['text'] = 'Здравствуйте! Вас приветствует гид в мир ' \
         'полезной еды. Для начала введите свой пол, возраст, рост и вес. Например: ' \
         'Мужчина 24 175 68.'
-        #res['response']['buttons'] = get_suggests(user_id)
 
     if 'мужчина' in req['request']['original_utterance'].lower():
         data = (req['request']['original_utterance']).split()
@@ -80,24 +79,6 @@ def handle_dialog(req, res):
         return
 
 
-'''    if req['session']['new']:
-        res['response']['text'] = 'Также, укажите степень Вашей физической активности:\n'\
-        '1. Полное отсутствие физической активности.\n2. Небольшие пробежки или легкая ' \
-        'гимнастика 1-3 раза в неделю.\n3. Средние нагрузки 3-5 раз в неделю.\n4. ' \
-        'Полноценные тренировки 6-7 раз в неделю.\n5. Интенсивные силовые упражнения ' \
-        '2 раза в день.'
-'''
     if req['request']['original_utterance'].lower() == '2':
         res['response']['text'] = '%s' % (str((kkal + 5)*1.375))
         return
-
-def get_suggests(user_id):
-    session = sessionStorage[user_id]
-
-    suggests = [
-        {'title': suggest, 'hide': False}
-        for suggest in session['suggests']
-    ]
-
-
-    return suggests
