@@ -71,3 +71,4 @@ def handle_dialog(req, res):
 
     if req['request']['original_utterance'] == '1':
         res['response']['text'] = 'Хорошо, учтём!'
+        return
