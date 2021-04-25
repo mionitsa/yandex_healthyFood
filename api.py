@@ -62,13 +62,15 @@ def handle_dialog(req, res):
     if req['request']['original_utterance'].lower() == 'женщина':
         gender = False
 
+    if req['session']['new']:
+
         res['response']['text'] = 'Введите свой возраст, рост и вес через пробел, ' \
         'ничего лишнего.'
         return
 
-        data = (req['request']['original_utterance']).split()
+    data = (req['request']['original_utterance']).split()
 
-        kkal = int(10*int(data[3]) + 6.25*int(data[2]) - 5*int(data[1]))
+    kkal = int(10*int(data[3]) + 6.25*int(data[2]) - 5*int(data[1]))
 
     if gender == True:
         res['response']['text'] = 'Вам нужно потреблять %s килокалорий в день.' % (
