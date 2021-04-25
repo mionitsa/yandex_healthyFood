@@ -60,24 +60,18 @@ def handle_dialog(req, res):
         'Мужчина 24 175 68.'
         res['response']['buttons'] = get_suggests(user_id)
         return
-
+'''
     data = (req['request']['original_utterance']).split()
 
     kkal = int(10*int(data[3]) + 6.25*int(data[2]) - 5*int(data[1]))
-
+'''
     if req['request']['original_utterance'].lower() == 'мужчина':
-        res['response']['text'] = 'Вам нужно потреблять %s килокалорий в день.' % (
-            str(kkal + 5))
-        return
+        res['response']['text'] = 'Вам нужно потреблять %s килокалорий в день.' #% (
+            #str(kkal + 5))
 
     if req['request']['original_utterance'].lower() == 'женщина':
         res['response']['text'] = 'Вам нужно потреблять не так много килокалорий в день.' #% (
             #str(kkal - 161))
-        return
-
-    if req['request']['original_utterance'].lower() == 'сайт':
-        res['response']['text'] = 'Можете перейти по ссылке: mionitsa.pythonanywhere.com/marks_calculator'
-        return
 
 def get_suggests(user_id):
     session = sessionStorage[user_id]
