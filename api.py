@@ -51,16 +51,20 @@ def handle_dialog(req, res):
         # Инициализируем сессию и поприветствуем его.
 
         res['response']['text'] = 'Здравствуйте! Вас приветствует гид в мир ' \
-        'полезной еды. Для начала введите свой возраст, рост и вес. Например: ' \
+        'полезной еды. Для начала введите свой пол, возраст, рост и вес. Например: ' \
         '24 175 68.'
         return
+
     data = (req['request']['original_utterance']).split()
 
-    for i in range(len(data)):
-        data[i] = int(data[i])
+    kkal = int(10*int(data[3]) + 6.25*int(data[2]) - 5*int(data[1]))
 
-    kkal = int(10*data[2] + 6.25*data[1] - 5*data[0])
-    # Если нет, то убеждаем его купить слона!
-    res['response']['text'] = 'Вам нужно съедать %s килокалорий в день.' % (
-        str(kkal)
-    )
+    if data[0].lower() == 'мужчина':
+        res['response']['text'] = 'Вам нужно потреблять %s килокалорий в день.' % (
+            str(kkal + 5)
+        )
+
+    if data[0].lower() == 'женщина':
+        res['response']['text'] = 'Вам нужно потреблять %s килокалорий в день.' % (
+            str(kkal - 161)
+        )
