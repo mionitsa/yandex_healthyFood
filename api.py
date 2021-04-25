@@ -52,7 +52,7 @@ def handle_dialog(req, res):
 
         res['response']['text'] = 'Здравствуйте! Вас приветствует гид в мир ' \
         'полезной еды. Для начала введите свой возраст, рост и вес. Например: ' \
-        '24 175 68.'
+        '24 175 68'
         return
 
     # Обрабатываем ответ пользователя.
@@ -66,14 +66,7 @@ def handle_dialog(req, res):
         res['response']['text'] = 'Слона можно найти на Яндекс.Маркете!'
         return
 
-     '''data = req['request']['original_utterance'].split()
-
-     for i in range (len(data)):
-         data[i] = int(data[i])
-
-     kkal = 10*data[2] + 6.25*data[1] - 5*data[0] + 5
-     '''
-     
+    # Если нет, то убеждаем его купить слона!
     res['response']['text'] = 'Все говорят "%s", а ты купи слона!' % (
         req['request']['original_utterance']
     )
