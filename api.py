@@ -73,7 +73,7 @@ def handle_dialog(req, res):
 
      kkal = 10*data[2] + 6.25*data[1] - 5*data[0] + 5
      '''
-
-    res['response']['text'] = 'Ваша суточная норма калорий составляет: "%s"' % (
+     
+    res['response']['text'] = 'Все говорят "%s", а ты купи слона!' % (
         req['request']['original_utterance']
     )
