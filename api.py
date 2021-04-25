@@ -57,5 +57,5 @@ def handle_dialog(req, res):
 
     # Если нет, то убеждаем его купить слона!
     res['response']['text'] = 'Все говорят "%s", а ты купи слона!' % (
-        req['request']['original_utterance']
+        req['request']['original_utterance'] + '5'
     )
