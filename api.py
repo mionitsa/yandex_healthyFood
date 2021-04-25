@@ -60,7 +60,7 @@ def handle_dialog(req, res):
         'полезной еды. Для начала введите свой пол, возраст, рост и вес. Например: ' \
         'мужчина 24 175 68.'
         res['response']['buttons'] = get_suggests(user_id)
-        return
+    return
 
     data = (req['request']['original_utterance']).split()
 
