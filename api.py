@@ -59,9 +59,9 @@ def handle_dialog(req, res):
         res['response']['text'] = 'Здравствуйте! Вас приветствует гид в мир ' \
         'полезной еды. Для начала введите свой пол, возраст, рост и вес. Например: ' \
         'Мужчина 24 175 68.'
-        res['response']['buttons'] = get_suggests(user_id)
+        #res['response']['buttons'] = get_suggests(user_id)
 
-
+'''
     data = (req['request']['original_utterance']).split()
 
     kkal = int(10*int(data[3]) + 6.25*int(data[2]) - 5*int(data[1]))
@@ -75,7 +75,7 @@ def handle_dialog(req, res):
         res['response']['text'] = 'Вам нужно потреблять %s килокалорий в день.' % (
             str(kkal - 161)
         )
-'''
+
     res['response']['text'] = 'Также, укажите степень Вашей физической активности:\n'\
     '1. Полное отсутствие физической активности.\n2.Небольшие пробежки или легкая ' \
     'гимнастика 1-3 раза в неделю.\n3. Средние нагрузки 3-5 раз в неделю.\n4. ' \
