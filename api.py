@@ -65,12 +65,12 @@ def handle_dialog(req, res):
 
     kkal = int(10*int(data[3]) + 6.25*int(data[2]) - 5*int(data[1]))
 
-    if data[0].lower() == 'мужчина':
+    if req['request']['original_utterance'].lower() == 'мужчина':
         res['response']['text'] = 'Вам нужно потреблять %s килокалорий в день.' % (
             str(kkal + 5))
         return
 
-    if data[0].lower() == 'женщина':
+    if req['request']['original_utterance'].lower() == 'женщина':
         res['response']['text'] = 'Вам нужно потреблять не так много килокалорий в день.' #% (
             #str(kkal - 161))
         return
