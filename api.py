@@ -79,13 +79,10 @@ def handle_dialog(req, res):
         res['response']['text'] = 'Можете перейти по ссылке: mionitsa.pythonanywhere.com/marks_calculator'
         return
 
-    def get_suggests(user_id):
-        session = sessionStorage[user_id]
-
-        suggests = [
-            {'title': suggest, 'hide': False}
-            for suggest in session['suggests']
-        ]
-
-
+def get_suggests(user_id):
+    session = sessionStorage[user_id]
+    suggests = [
+        {'title': suggest, 'hide': False}
+        for suggest in session['suggests']
+    ]
     return suggests
