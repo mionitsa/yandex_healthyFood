@@ -62,14 +62,14 @@ def handle_dialog(req, res):
         #res['response']['buttons'] = get_suggests(user_id)
 
 
-    if 'мужчина' in req['request']['original_utterance'].lower():
+    if 'мужчина'.lower() in req['request']['original_utterance'].lower():
         data = (req['request']['original_utterance']).split()
         kkal = int(10*int(data[3]) + 6.25*int(data[2]) - 5*int(data[1]))
         res['response']['text'] = 'Вам нужно потреблять %s килокалорий в день.' % (
             str(kkal + 5))
         return
 
-    if 'женщина' in req['request']['original_utterance'].lower():
+    if 'женщина'.lower() in req['request']['original_utterance'].lower():
         data = (req['request']['original_utterance']).split()
         kkal = int(10*int(data[3]) + 6.25*int(data[2]) - 5*int(data[1]))
         res['response']['text'] = 'Вам нужно потреблять %s килокалорий в день.' % (
