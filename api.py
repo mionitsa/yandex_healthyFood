@@ -59,19 +59,17 @@ def handle_dialog(req, res):
         res['response']['text'] = 'Здравствуйте! Вас приветствует гид в мир ' \
         'полезной еды. Для начала введите свой пол, возраст, рост и вес. Например: ' \
         'Мужчина 24 175 68.'
-        #res['response']['buttons'] = get_suggests(user_id)
+        res['response']['buttons'] = get_suggests(user_id)
 
+    data = (req['request']['original_utterance']).split()
+    kkal = int(10*int(data[3]) + 6.25*int(data[2]) - 5*int(data[1]))
 
     if 'мужчина' in req['request']['original_utterance'].lower():
-        data = (req['request']['original_utterance']).split()
-        kkal = int(10*int(data[3]) + 6.25*int(data[2]) - 5*int(data[1]))
         res['response']['text'] = 'Вам нужно потреблять %s килокалорий в день.' % (
             str(kkal + 5))
         return
 
     if 'женщина' in req['request']['original_utterance'].lower():
-        data = (req['request']['original_utterance']).split()
-        kkal = int(10*int(data[3]) + 6.25*int(data[2]) - 5*int(data[1]))
         res['response']['text'] = 'Вам нужно потреблять %s килокалорий в день.' % (
             str(kkal - 161))
         return
