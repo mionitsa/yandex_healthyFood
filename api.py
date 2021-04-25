@@ -66,13 +66,14 @@ def handle_dialog(req, res):
         res['response']['text'] = 'Слона можно найти на Яндекс.Маркете!'
         return
 
-     data = req['request']['original_utterance'].split()
+     '''data = req['request']['original_utterance'].split()
 
      for i in range (len(data)):
          data[i] = int(data[i])
 
      kkal = 10*data[2] + 6.25*data[1] - 5*data[0] + 5
+     '''
 
     res['response']['text'] = 'Ваша суточная норма калорий составляет: "%s"' % (
-        str(kkal)
+        req['request']['original_utterance']
     )
