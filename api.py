@@ -61,21 +61,21 @@ def handle_dialog(req, res):
         'Мужчина 24 175 68.'
         #res['response']['buttons'] = get_suggests(user_id)
 
+
+    if 'мужчина' in req['request']['original_utterance'].lower():
+        data = (req['request']['original_utterance']).split()
+        kkal = int(10*int(data[3]) + 6.25*int(data[2]) - 5*int(data[1]))
+        res['response']['text'] = 'Вам нужно потреблять %s килокалорий в день.' % (
+            str(kkal + 5))
+        return
+
+    if 'женщина' in req['request']['original_utterance'].lower():
+        data = (req['request']['original_utterance']).split()
+        kkal = int(10*int(data[3]) + 6.25*int(data[2]) - 5*int(data[1]))
+        res['response']['text'] = 'Вам нужно потреблять %s килокалорий в день.' % (
+            str(kkal - 161))
+        return
 '''
-    data = (req['request']['original_utterance']).split()
-
-    kkal = int(10*int(data[3]) + 6.25*int(data[2]) - 5*int(data[1]))
-
-    if data[0].lower() == 'мужчина':
-        res['response']['text'] = 'Вам нужно потреблять %s килокалорий в день.' % (
-            str(kkal + 5)
-        )
-
-    if data[0].lower() == 'женщина':
-        res['response']['text'] = 'Вам нужно потреблять %s килокалорий в день.' % (
-            str(kkal - 161)
-        )
-
     res['response']['text'] = 'Также, укажите степень Вашей физической активности:\n'\
     '1. Полное отсутствие физической активности.\n2.Небольшие пробежки или легкая ' \
     'гимнастика 1-3 раза в неделю.\n3. Средние нагрузки 3-5 раз в неделю.\n4. ' \
