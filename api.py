@@ -69,3 +69,10 @@ def handle_dialog(req, res):
         res['response']['text'] = 'Вам нужно потреблять %s килокалорий в день.' % (
             str(kkal - 161)
         )
+
+    res['response']['text'] = 'Вот и всё'
+    return
+
+    if req['request']['original_utterance'].lower() == 'пока':
+        res['response']['text'] = 'Миша пока('
+        return
