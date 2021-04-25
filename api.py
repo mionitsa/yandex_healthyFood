@@ -54,8 +54,8 @@ def handle_dialog(req, res):
         'полезной еды. Для начала введите свой возраст, рост и вес. Например: ' \
         '24 175 68'
         return
-
+    data = req['request']['original_utterance'] + '5'
     # Если нет, то убеждаем его купить слона!
     res['response']['text'] = 'Все говорят "%s", а ты купи слона!' % (
-        req['request']['original_utterance'] + '5'
+        data
     )
