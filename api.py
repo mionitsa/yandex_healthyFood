@@ -47,38 +47,24 @@ def handle_dialog(req, res):
     user_id = req['session']['user_id']
 
     if req['session']['new']:
-
-        sessionStorage[user_id] = {
-            'suggests': [
-                "Мужчина",
-                "Женщина",
-            ]
-        }
+        # Это новый пользователь.
+        # Инициализируем сессию и поприветствуем его.
 
         res['response']['text'] = 'Здравствуйте! Вас приветствует гид в мир ' \
         'полезной еды. Для начала введите свой пол, возраст, рост и вес. Например: ' \
-        'Мужчина 24 175 68.'
-        res['response']['buttons'] = get_suggests(user_id)
+        '24 175 68.'
         return
-'''
+
     data = (req['request']['original_utterance']).split()
 
     kkal = int(10*int(data[3]) + 6.25*int(data[2]) - 5*int(data[1]))
-'''
-    if req['request']['original_utterance'].lower() == 'мужчина':
-        res['response']['text'] = 'Вам нужно потреблять %s килокалорий в день.' #% (
-            #str(kkal + 5))
-        return
 
-    if req['request']['original_utterance'].lower() == 'женщина':
-        res['response']['text'] = 'Вам нужно потреблять не так много килокалорий в день.' #% (
-            #str(kkal - 161))
-        return
-        
-def get_suggests(user_id):
-    session = sessionStorage[user_id]
-    suggests = [
-        {'title': suggest, 'hide': False}
-        for suggest in session['suggests']
-    ]
-    return suggests
+    if data[0].lower() == 'мужчина':
+        res['response']['text'] = 'Вам нужно потреблять %s килокалорий в день.' % (
+            str(kkal + 5)
+        )
+
+    if data[0].lower() == 'женщина':
+        res['response']['text'] = 'Вам нужно потреблять %s килокалорий в день.' % (
+            str(kkal - 161)
+        )
