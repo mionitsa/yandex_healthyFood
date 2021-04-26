@@ -48,13 +48,13 @@ def handle_dialog(req, res):
     user_id = req['session']['user_id']
 
     if req['session']['new']:
-
         res['response']['text'] = 'Привет! Меня зовут ЗдравоБот. Я помогу тебе ' \
         'вести здоровый образ жизни, а также дам несколько советов о правильном питании. ' \
         'Для начала давай рассчитаем количество калорий, ' \
         'которые тебе стоит потреблять ежедневно. Скажи "Рассчитать".'
+        return
 
-     if 'мужчина'.lower() in req['request']['original_utterance'].lower():
+    if 'мужчина'.lower() in req['request']['original_utterance'].lower():
         data = (req['request']['original_utterance']).split()
         kkal = int(10*int(data[3]) + 6.25*int(data[2]) - 5*int(data[1]))
         res['response']['text'] = 'Вам нужно потреблять %s килокалорий в день.' % (
