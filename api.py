@@ -97,5 +97,6 @@ def handle_dialog(req, res):
     if 'факт' in req['request']['original_utterance'].lower():
         bank = ['бла бла бла', 'ла ла лей', 'вот это да', 'ахаххахах']
         random_number = randint(0, len(bank)-1)
-        res['response']['text'] = bank[random_number]
+        res['response']['text'] = 'Вам нужно потреблять %s килокалорий в день.' % (
+            str(bank[random_number]))
         return
