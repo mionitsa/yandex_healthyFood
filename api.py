@@ -43,8 +43,6 @@ def main():
         indent=2
     )
 
-
-# Функция для непосредственной обработки диалога.
 def handle_dialog(req, res):
     user_id = req['session']['user_id']
 
