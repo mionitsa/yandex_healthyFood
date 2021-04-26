@@ -91,3 +91,6 @@ def handle_dialog(req, res):
         res['response']['text'] = 'Вам нужно потреблять %s килокалорий в день.' % (
             str(int(kkal)))
         return
+    else:
+        res['response']['text'] = 'Не совсем Вас понял, попробуйте вновь.'
+        return
