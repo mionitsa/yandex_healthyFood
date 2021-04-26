@@ -76,6 +76,13 @@ def handle_dialog(req, res):
             str(int(kkal)))
         return
 
+    if 'факт' in req['request']['original_utterance'].lower():
+        bank = ['бла бла бла', 'ла ла лей', 'вот это да', 'ахаххахах']
+        random_number = randint(0, len(bank)-1)
+        res['response']['text'] = 'Вам нужно потреблять %s килокалорий в день.' % (
+            str(bank[random_number]))
+        return
+
     if 'женщина' in req['request']['original_utterance'].lower():
         data = (req['request']['original_utterance']).split()
         kkal = int(10*int(data[3]) + 6.25*int(data[2]) - 5*int(data[1]) - 161)
@@ -92,11 +99,4 @@ def handle_dialog(req, res):
         return
     else:
         res['response']['text'] = 'Не совсем Вас понял, попробуйте вновь.'
-        return
-
-    if 'факт' in req['request']['original_utterance'].lower():
-        bank = ['бла бла бла', 'ла ла лей', 'вот это да', 'ахаххахах']
-        random_number = randint(0, len(bank)-1)
-        res['response']['text'] = 'Вам нужно потреблять %s килокалорий в день.' % (
-            str(bank[random_number]))
         return
