@@ -54,7 +54,7 @@ def handle_dialog(req, res):
         'которые Вам стоит потреблять ежедневно. Скажите "Рассчитать".'
         return
 
-    if 'рассчитать'.lower() in req['request']['original_utterance'].lower():
+    if 'рассчитать' in req['request']['original_utterance'].lower():
         res['response']['text'] = 'Введите свой пол, возраст, рост, вес, а также укажи степень ' \
         'Вашей физической активности через пробел, всё просто, ничего лишнего.\n1. Полное отсутствие ' \
         'физической активности.\n2. Небольшие пробежки или легкая ' \
@@ -62,7 +62,7 @@ def handle_dialog(req, res):
         'Полноценные тренировки 6-7 раз в неделю. Вот так: Мужчина 24 186 72 2'
         return
 
-    if 'мужчина'.lower() in req['request']['original_utterance'].lower():
+    if 'мужчина' in req['request']['original_utterance'].lower():
         data = (req['request']['original_utterance']).split()
         kkal = int(10*int(data[3]) + 6.25*int(data[2]) - 5*int(data[1]) + 5)
         if int(data[4]) == 1:
@@ -77,7 +77,7 @@ def handle_dialog(req, res):
             str(int(kkal)))
         return
 
-    if 'женщина'.lower() in req['request']['original_utterance'].lower():
+    if 'женщина' in req['request']['original_utterance'].lower():
         data = (req['request']['original_utterance']).split()
         kkal = int(10*int(data[3]) + 6.25*int(data[2]) - 5*int(data[1]) - 161)
         if int(data[4]) == 1:
