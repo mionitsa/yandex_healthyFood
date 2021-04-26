@@ -6,6 +6,7 @@ from __future__ import unicode_literals
 # Импортируем модули для работы с JSON и логами.
 import json
 import logging
+from random import randint
 
 # Импортируем подмодули Flask для запуска веб-сервиса.
 from flask import Flask, request
@@ -93,4 +94,10 @@ def handle_dialog(req, res):
         return
     else:
         res['response']['text'] = 'Не совсем Вас понял, попробуйте вновь.'
+        return
+
+    if 'факт' in req['request']['original_utterance'].lower():
+        bank = ['бла бла бла', 'ла ла лей', 'вот это да', 'ахаххахах']
+        random_number = randint(0, len(bank)-1)
+        res['response']['text'] = bank[random_number]
         return
