@@ -87,6 +87,17 @@ def handle_dialog(req, res):
         res['response']['text'] = bank[random_number]
         return
 
+    if req['request']['original_utterance'].lower() in [
+        'помощь',
+        'что ты умеешь',
+        'что ты умеешь?',
+        'помоги',
+    ]:
+        res['response']['text'] = 'Я могу рассчитать количество калорий, которые ' \
+        'стоит потреблять каждый день. Для этого введите "Рассчитать". \n' \
+        'Я могу рассказать интересный факт о еде. Для этого ввидите "Факт". \n'
+        return
+
     if 'женщина' in req['request']['original_utterance'].lower():
         data = (req['request']['original_utterance']).split()
         kkal = int(10*int(data[3]) + 6.25*int(data[2]) - 5*int(data[1]) - 161)
