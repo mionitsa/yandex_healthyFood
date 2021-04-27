@@ -66,6 +66,7 @@ def handle_dialog(req, res):
         new_data = []
         for i in range(len(data)):
             new_data.append(data[i].replace('.',''))
+            new_data.append(data[i].replace(',',''))
         kkal = int(10*int(new_data[3]) + 6.25*int(new_data[2]) - 5*int(new_data[1]) + 5)
         if int(new_data[4]) == 1:
             kkal *= 1.2
@@ -106,6 +107,7 @@ def handle_dialog(req, res):
         new_data = []
         for i in range(len(data)):
             new_data.append(data[i].replace('.',''))
+            new_data.append(data[i].replace(',',''))
         kkal = int(10*int(new_data[3]) + 6.25*int(new_data[2]) - 5*int(new_data[1]) - 161)
         if int(new_data[4]) == 1:
             kkal *= 1.2
