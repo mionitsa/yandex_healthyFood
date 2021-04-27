@@ -63,14 +63,17 @@ def handle_dialog(req, res):
 
     if 'мужчина' in req['request']['original_utterance'].lower():
         data = (req['request']['original_utterance']).split()
-        kkal = int(10*int(data[3]) + 6.25*int(data[2]) - 5*int(data[1]) + 5)
-        if int(data[4]) == 1:
+        new_data = []
+        for i in range(len(data)):
+            new_data.append(data[i].replace('.',''))
+        kkal = int(10*int(new_data[3]) + 6.25*int(new_data[2]) - 5*int(new_data[1]) + 5)
+        if int(new_data[4]) == 1:
             kkal *= 1.2
-        if int(data[4]) == 2:
+        if int(new_data[4]) == 2:
             kkal *= 1.375
-        if int(data[4]) == 3:
+        if int(new_data[4]) == 3:
             kkal *= 1.55
-        if int(data[4]) == 4:
+        if int(new_data[4]) == 4:
             kkal *= 1.725
         res['response']['text'] = 'Вам нужно потреблять %s килокалорий в день.' % (
             str(int(kkal)))
@@ -100,14 +103,17 @@ def handle_dialog(req, res):
 
     if 'женщина' in req['request']['original_utterance'].lower():
         data = (req['request']['original_utterance']).split()
-        kkal = int(10*int(data[3]) + 6.25*int(data[2]) - 5*int(data[1]) - 161)
-        if int(data[4]) == 1:
+        new_data = []
+        for i in range(len(data)):
+            new_data.append(data[i].replace('.',''))
+        kkal = int(10*int(new_data[3]) + 6.25*int(new_data[2]) - 5*int(new_data[1]) - 161)
+        if int(new_data[4]) == 1:
             kkal *= 1.2
-        if int(data[4]) == 2:
+        if int(new_data[4]) == 2:
             kkal *= 1.375
-        if int(data[4]) == 3:
+        if int(new_data[4]) == 3:
             kkal *= 1.55
-        if int(data[4]) == 4:
+        if int(new_data[4]) == 4:
             kkal *= 1.725
         res['response']['text'] = 'Вам нужно потреблять %s килокалорий в день.' % (
             str(int(kkal)))
