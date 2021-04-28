@@ -103,7 +103,7 @@ def handle_dialog(req, res):
             kkal *= 1.55
         if int(data[4]) == 4:
             kkal *= 1.725
-        res['response']['text'] = 'Вам нужно потреблять примерно', int(kkal), 'килокалорий в день. '
+        res['response']['text'] = 'Вам нужно потреблять примерно', int(kkal), 'килокалорий в день.'
         return
 
     if 'женщина' in str(req['request']['original_utterance']).lower():
