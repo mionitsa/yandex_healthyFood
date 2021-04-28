@@ -110,10 +110,12 @@ def handle_dialog(req, res):
             kkal *= 1.55
         if int(data[4]) == 4:
             kkal *= 1.725
-        res['response']['text'] = 'Вам нужно потреблять %s килокалорий в день.' % (
+        res['response']['text'] = 'Вам нужно потреблять %s килокалорий в день. Для удобного подсчёта калорий ' \
+        'можно использовать приложение.' % (
             str(int(kkal)))
         res['response']['buttons'] = [
-            {'title': "Приложение", "url": "https://market.yandex.ru/search?text=слон", 'hide': True}
+            {'title': "Кликай!", "url": "https://apps.apple.com/ru/app/yazio-%D1%81%D1%87%D0%B5%D1%82%D1%87%D0%B8%D0%BA-%D0%BA%D0' \
+            '%B0%D0%BB%D0%BE%D1%80%D0%B8%D0%B9-%D0%B8-%D0%B4%D0%B8%D0%B5%D1%82%D0%B0/id946099227", 'hide': True}
         ]
         return
 
