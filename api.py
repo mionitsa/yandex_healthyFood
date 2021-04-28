@@ -97,6 +97,7 @@ def handle_dialog(req, res):
 
     if 'клик' in str(req['request']['original_utterance']).lower():
         res['response']['text'] = 'Вы можете спросить меня интересный факт о еде. Я знаю куча таких!'
+        return
 
     if 'мужчина' in str(req['request']['original_utterance']).lower():
         req['request']['original_utterance'] = req['request']['original_utterance'].replace('.', ' ')
