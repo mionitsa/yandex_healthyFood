@@ -98,8 +98,7 @@ def handle_dialog(req, res):
             kkal *= 1.55
         if int(data[4]) == 4:
             kkal *= 1.725
-        res['response']['text'] = 'Вам нужно потреблять %s килокалорий в день.' % (
-            str(int(kkal)))
+        res['response']['text'] = 'Вам нужно потреблять примерно', str(int(kkal)), 'килокалорий в день. '
         return
 
     if 'женщина' in str(req['request']['original_utterance']).lower():
@@ -117,9 +116,9 @@ def handle_dialog(req, res):
             kkal *= 1.55
         if int(data[4]) == 4:
             kkal *= 1.725
-        res['response']['text'] = 'Вам нужно потреблять %s килокалорий в день.' % (
-            str(int(kkal)))
+        res['response']['text'] = 'Вам нужно потреблять примерно', str(int(kkal)), 'килокалорий в день. '
         return
+
     else:
         res['response']['text'] = 'Не совсем Вас понял, попробуйте вновь.'
         return
