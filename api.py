@@ -151,6 +151,10 @@ def handle_dialog(req, res):
         res['response']['text'] = 'Вы можете спросить меня интересный факт о еде. Я знаю куча таких!'
         return
 
+    if 'вода' in str(req['request']['original_utterance']).lower():
+        res['response']['text'] = 'Эх... как жаль, что я не могу попробовать воды, ведь я бот.'
+        return
+
     if 'мужчина' in str(req['request']['original_utterance']).lower():
         req['request']['original_utterance'] = req['request']['original_utterance'].replace('.', ' ')
         req['request']['original_utterance'] = req['request']['original_utterance'].replace('-', ' ')
