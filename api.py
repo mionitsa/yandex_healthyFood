@@ -60,6 +60,11 @@ def handle_dialog(req, res):
         'гимнастика 1-3 раза в неделю.\n3. Средние нагрузки 3-5 раз в неделю.\n4. ' \
         'Полноценные тренировки 6-7 раз в неделю. \nВот так: Мужчина 24 186 72 2'
         return
+    #Совет
+    if "совет" in req['request']['original_utterance'].lower():
+        res['response']['text'] = '1. '
+        return
+
     #Факт
     if 'факт' in req['request']['original_utterance'].lower():
         bank = ['Острая пища продлевает жизнь.',
@@ -98,7 +103,7 @@ def handle_dialog(req, res):
             kkal *= 1.55
         if int(data[4]) == 4:
             kkal *= 1.725
-        res['response']['text'] = 'Вам нужно потреблять примерно', str(int(kkal)), 'килокалорий в день. '
+        res['response']['text'] = 'Вам нужно потреблять примерно', int(kkal), 'килокалорий в день. '
         return
 
     if 'женщина' in str(req['request']['original_utterance']).lower():
@@ -116,7 +121,7 @@ def handle_dialog(req, res):
             kkal *= 1.55
         if int(data[4]) == 4:
             kkal *= 1.725
-        res['response']['text'] = 'Вам нужно потреблять примерно', str(int(kkal)), 'килокалорий в день. '
+        res['response']['text'] = 'Вам нужно потреблять примерно', int(kkal), 'килокалорий в день. '
         return
 
     else:
