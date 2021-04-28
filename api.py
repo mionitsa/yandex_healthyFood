@@ -62,6 +62,10 @@ def handle_dialog(req, res):
         return
 
     if 'мужчина' in req['request']['original_utterance'].lower():
+        req['request']['original_utterance'] = req['request']['original_utterance'].replace('.', ' ')
+        req['request']['original_utterance'] = req['request']['original_utterance'].replace('-', ' ')
+        req['request']['original_utterance'] = req['request']['original_utterance'].replace(',', ' ')
+
         data = (req['request']['original_utterance']).split()
         kkal = int(10*int(data[3]) + 6.25*int(data[2]) - 5*int(data[1]) + 5)
         if int(data[4]) == 1:
@@ -99,6 +103,10 @@ def handle_dialog(req, res):
         return
 
     if 'женщина' in req['request']['original_utterance'].lower():
+        req['request']['original_utterance'] = req['request']['original_utterance'].replace('.', ' ')
+        req['request']['original_utterance'] = req['request']['original_utterance'].replace('-', ' ')
+        req['request']['original_utterance'] = req['request']['original_utterance'].replace(',', ' ')
+        
         data = (req['request']['original_utterance']).split()
         kkal = int(10*int(data[3]) + 6.25*int(data[2]) - 5*int(data[1]) - 161)
         if int(data[4]) == 1:
