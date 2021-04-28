@@ -83,7 +83,7 @@ def handle_dialog(req, res):
         'Я могу рассказать интересный факт о еде. Для этого введите "Факт". \n'
         return
 
-    if 'мужчина' in req['request']['original_utterance'].lower():
+    if 'мужчина' in str(req['request']['original_utterance']).lower():
         req['request']['original_utterance'] = req['request']['original_utterance'].replace('.', ' ')
         req['request']['original_utterance'] = req['request']['original_utterance'].replace('-', ' ')
         req['request']['original_utterance'] = req['request']['original_utterance'].replace(',', ' ')
@@ -102,7 +102,7 @@ def handle_dialog(req, res):
             str(int(kkal)))
         return
 
-    if 'женщина' in req['request']['original_utterance'].lower():
+    if 'женщина' in str(req['request']['original_utterance']).lower():
         req['request']['original_utterance'] = req['request']['original_utterance'].replace('.', ' ')
         req['request']['original_utterance'] = req['request']['original_utterance'].replace('-', ' ')
         req['request']['original_utterance'] = req['request']['original_utterance'].replace(',', ' ')
