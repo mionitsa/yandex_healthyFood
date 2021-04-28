@@ -141,9 +141,10 @@ def handle_dialog(req, res):
         'что ты умеешь?',
         'помоги',
     ]:
-        res['response']['text'] = 'Я могу рассчитать количество калорий, которые ' \
-        'стоит потреблять каждый день. Для этого введите "Рассчитать". \n' \
-        'Я могу рассказать интересный факт о еде. Для этого введите "Факт". \n'
+        res['response']['text'] = 'Дополнительную информацию о возможностях и реализации навыка можно найти по ссылке внизу.'
+        res['response']['buttons'] = [
+            {'title': "О навыке", "url": "https://github.com/mionitsa/yandex_healthyFood", 'hide': True}
+        ]
         return
 
     if 'клик' in str(req['request']['original_utterance']).lower():
