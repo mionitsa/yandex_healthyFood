@@ -62,15 +62,6 @@ def handle_dialog(req, res):
         return
 
     if 'мужчина' in req['request']['original_utterance'].lower():
-
-        if '.' in req['request']['original_utterance']:
-            res['response']['text'] = 'Купи слона'
-            return
-        #if ',' in req['request']['original_utterance']:
-        #    req['request']['original_utterance'] = req['request']['original_utterance'].replace(',',' '))
-        #f '-' in req['request']['original_utterance']:
-        #   req['request']['original_utterance'] = req['request']['original_utterance'].replace('-',' '))
-
         data = (req['request']['original_utterance']).split()
         kkal = int(10*int(data[3]) + 6.25*int(data[2]) - 5*int(data[1]) + 5)
         if int(data[4]) == 1:
@@ -108,17 +99,9 @@ def handle_dialog(req, res):
         return
 
     if 'женщина' in req['request']['original_utterance'].lower():
-
-        #if '.' in req['request']['original_utterance']:
-        #    req['request']['original_utterance'] = req['request']['original_utterance'].replace('.',' '))
-        #if ',' in req['request']['original_utterance']:
-        #    req['request']['original_utterance'] = req['request']['original_utterance'].replace(',',' '))
-        #if '-' in req['request']['original_utterance']:
-        #    req['request']['original_utterance'] = req['request']['original_utterance'].replace('-',' '))
-
         data = (req['request']['original_utterance']).split()
         kkal = int(10*int(data[3]) + 6.25*int(data[2]) - 5*int(data[1]) - 161)
-        if int(new_data[4]) == 1:
+        if int(data[4]) == 1:
             kkal *= 1.2
         if int(data[4]) == 2:
             kkal *= 1.375
