@@ -61,9 +61,12 @@ def handle_dialog(req, res):
         'Полноценные тренировки 6-7 раз в неделю. \nВот так: Мужчина 24 186 72 2'
         return
     #Совет
-    if "совет" in req['request']['original_utterance'].lower():
-        res['response']['text'] = '1. '
+    if 'совет' in req['request']['original_utterance'].lower():
+        res['response']['text'] = '1. Следите за своим рационом, а также регялярностью питания.\n' \
+        '2. Пейте достаточное количество воды.\n3. Перекусывайте правильно.\n4. ' \
+        'Ешьте еньше сахара!\n 5. Больше продуктов, богатых пищевыми волокнами.\n 6. Начинайте день с завтрака.'
         return
+
 
     #Факт
     if 'факт' in req['request']['original_utterance'].lower():
@@ -103,7 +106,8 @@ def handle_dialog(req, res):
             kkal *= 1.55
         if int(data[4]) == 4:
             kkal *= 1.725
-        res['response']['text'] = 'Вам нужно потреблять примерно', int(kkal), 'килокалорий в день.'
+        res['response']['text'] = 'Вам нужно потреблять %s килокалорий в день.' % (
+            str(int(kkal)))
         return
 
     if 'женщина' in str(req['request']['original_utterance']).lower():
@@ -121,9 +125,9 @@ def handle_dialog(req, res):
             kkal *= 1.55
         if int(data[4]) == 4:
             kkal *= 1.725
-        res['response']['text'] = 'Вам нужно потреблять примерно', int(kkal), 'килокалорий в день. '
+        res['response']['text'] = 'Вам нужно потреблять %s килокалорий в день.' % (
+            str(int(kkal)))
         return
-
     else:
         res['response']['text'] = 'Не совсем Вас понял, попробуйте вновь.'
         return
