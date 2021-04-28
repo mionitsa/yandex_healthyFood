@@ -67,7 +67,7 @@ def handle_dialog(req, res):
         'Ешьте меньше сахара!\n 5. Больше продуктов, богатых пищевыми волокнами.\n 6. Начинайте день с обильного завтрака.' \
         '\nДля дополнительной информации напишите номер совета.'
         return
-        
+
     if  req['request']['original_utterance'] == '1':
         res['response']['text'] = 'Вывожу информацию о первом совете.'
         return
@@ -112,6 +112,10 @@ def handle_dialog(req, res):
             kkal *= 1.725
         res['response']['text'] = 'Вам нужно потреблять %s килокалорий в день.' % (
             str(int(kkal)))
+          sessionStorage[user_id] = {
+            'suggests': ["Приложение",]
+        }
+        res['response']['buttons'] = get_suggests(user_id)
         return
 
     if 'женщина' in str(req['request']['original_utterance']).lower():
@@ -135,3 +139,12 @@ def handle_dialog(req, res):
     else:
         res['response']['text'] = 'Не совсем Вас понял, попробуйте вновь.'
         return
+
+    def get_suggests(user_id):
+        session = sessionStorage[user_id]
+
+        suggests = [
+            {'title': suggest, "url": "https://market.yandex.ru/search?text=слон", 'hide': True}
+        ]
+
+        return suggests
