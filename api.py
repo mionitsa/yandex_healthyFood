@@ -133,8 +133,9 @@ def handle_dialog(req, res):
         return
 
     if 'здоров' in req['request']['original_utterance'].lower():
-        res['response']['text'] = 'Боюсь, что Вам такая еды не подойдёт. Люди не могут питаться двоичным кодом.'
+        res['response']['text'] = 'Боюсь, что Вам такая еда не подойдёт. Люди не могут питаться двоичным кодом.'
         return
+
     #Факт
     if 'факт' in req['request']['original_utterance'].lower():
         bank = ['Острая пища продлевает жизнь.',
